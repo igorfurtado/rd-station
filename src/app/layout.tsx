@@ -1,14 +1,16 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Nunito_Sans } from 'next/font/google'
 
-import './globals.css'
 import StyledComponentsRegistry from './libs/styled-components-registry'
 
-const inter = Inter({ subsets: ['latin'] })
+const nunito = Nunito_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'RD Station',
-  description: 'Tech Challenge'
+  description: 'Tech Challenge',
+  icons: {
+    icon: '/logo.svg'
+  }
 }
 
 export default function RootLayout({
@@ -18,7 +20,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='pt-br'>
-      <body className={inter.className}>
+      <body className={nunito.className} suppressHydrationWarning={true}>
+        <link rel='mask-icon' href='/logo.svg' color='#FFFFFF' />
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
     </html>
