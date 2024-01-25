@@ -9,10 +9,12 @@
         "groups": [
           "/^next/",
           "/^react/",
+          "/styled-components/",
           "module",
           "/^@/",
           "/^components/",
           "/^styles/",
+          "/^libs/",
           "/^~/",
           ["parent", "sibling", "index"]
         ],
