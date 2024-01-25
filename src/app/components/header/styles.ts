@@ -31,6 +31,12 @@ export const Container = styled.header`
       font-size: 1rem;
     }
   }
+
+  @media (max-width: 340px) {
+    b {
+      font-size: 0.875rem;
+    }
+  }
 `
 
 export const StyledImage = styled.img`
