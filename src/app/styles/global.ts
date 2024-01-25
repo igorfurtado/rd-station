@@ -1,6 +1,8 @@
+'use client'
+
 import { createGlobalStyle } from 'styled-components'
 
-import { colors } from './references'
+import { colors, fonts } from './references'
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -8,7 +10,7 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'NunitoSans', sans-serif;
+    font-family: ${fonts.family.Nunito_Sans}, sans-serif;
   }
 
   body {

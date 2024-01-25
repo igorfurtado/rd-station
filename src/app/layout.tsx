@@ -1,9 +1,7 @@
 import type { Metadata } from 'next'
-import { Nunito_Sans } from 'next/font/google'
 
-import StyledComponentsRegistry from './libs/styled-components-registry'
-
-const nunito = Nunito_Sans({ subsets: ['latin'] })
+import StyledComponentsRegistry from './lib/registry'
+import { GlobalStyles } from './styles/global'
 
 export const metadata: Metadata = {
   title: 'RD Station',
@@ -20,9 +18,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='pt-br'>
-      <body className={nunito.className} suppressHydrationWarning={true}>
+      <body suppressHydrationWarning={true}>
         <link rel='mask-icon' href='/logo.svg' color='#FFFFFF' />
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <StyledComponentsRegistry>
+          <GlobalStyles />
+          {children}
+        </StyledComponentsRegistry>
       </body>
     </html>
   )
