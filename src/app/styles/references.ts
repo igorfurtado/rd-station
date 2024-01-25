@@ -35,55 +35,55 @@ export const fontsReferences = ({
 }): FontStyle => {
   const defaultStyles = (mobile: boolean) => ({
     headingLg: {
-      fontFamily: fonts.family.Darker_Grotesque,
+      fontFamily: 'Darker_Grotesque',
       fontSize: mobile ? '40px' : '56px',
       lineHeight: '100%',
       fontWeight: '900'
     },
     headingMd: {
-      fontFamily: fonts.family.Darker_Grotesque,
+      fontFamily: 'Darker_Grotesque',
       fontSize: mobile ? '32px' : '40px',
       lineHeight: '100%',
       fontWeight: '900'
     },
     headingSm: {
-      fontFamily: fonts.family.Darker_Grotesque,
+      fontFamily: 'Darker_Grotesque',
       fontSize: mobile ? '24px' : '32px',
       lineHeight: '110%',
       fontWeight: '900'
     },
     headingXs: {
-      fontFamily: fonts.family.Darker_Grotesque,
+      fontFamily: 'Darker_Grotesque',
       fontSize: mobile ? '20px' : '24px',
-      lineHeight: '100%',
-      fontWeight: '800'
+      lineHeight: '110%',
+      fontWeight: '700'
     },
     subtitleSm: {
-      fontFamily: fonts.family.Nunito_Sans,
+      fontFamily: 'Nunito_Sans',
       fontSize: mobile ? '16px' : '20px',
       lineHeight: '140%',
       fontWeight: '400'
     },
     subtitleXs: {
-      fontFamily: fonts.family.Nunito_Sans,
+      fontFamily: 'Nunito_Sans',
       fontSize: '14px',
       lineHeight: '120%',
       fontWeight: '400'
     },
     bodyLg: {
-      fontFamily: fonts.family.Nunito_Sans,
+      fontFamily: 'Nunito_Sans',
       fontSize: '20px',
       lineHeight: '150%',
       fontWeight: '400'
     },
     bodyMd: {
-      fontFamily: fonts.family.Nunito_Sans,
+      fontFamily: 'Nunito_Sans',
       fontSize: '16px',
       lineHeight: '150%',
       fontWeight: '400'
     },
     bodySm: {
-      fontFamily: fonts.family.Nunito_Sans,
+      fontFamily: 'Nunito_Sans',
       fontSize: '14px',
       lineHeight: '150%',
       fontWeight: '400'

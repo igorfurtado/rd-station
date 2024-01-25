@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 
 import { fontsReferences } from '../../styles/references'
 import { BaseText } from './styles'
-import { DefaultFonts, TypographyBaseProps } from './types'
+import { DefaultFonts, FontFamily, TypographyBaseProps } from './types'
 
 type TypographyProps = {
   type: keyof typeof DefaultFonts
@@ -21,7 +21,14 @@ const Typography = ({
   const defaultStyles = fontsReferences({ type, mobile })
 
   return (
-    <BaseText as={role} style={defaultStyles} {...rest}>
+    <BaseText
+      as={role}
+      $family={defaultStyles.fontFamily as FontFamily}
+      $size={defaultStyles.fontSize}
+      $lineheight={defaultStyles.lineHeight}
+      $weight={defaultStyles.fontWeight}
+      {...rest}
+    >
       {children}
     </BaseText>
   )

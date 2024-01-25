@@ -25,6 +25,10 @@ export type Color = keyof typeof colors
 export type FontFamily = keyof typeof fonts.family
 
 export type TypographyBaseProps = {
+  $family?: FontFamily
+  $weight?: string
+  $lineheight?: string
+  $size?: string
   color?: Color
   align?: CSSProperties['textAlign']
   mr?: CSSProperties['marginRight']

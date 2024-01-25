@@ -1,11 +1,15 @@
 'use client'
 
-import Typography from './components/typography'
+import Header from './components/header'
+import MainContent from './components/main'
 
 export default function Home() {
   return (
-    <main>
-      <Typography type='headingLg'>teste</Typography>
-    </main>
+    <>
+      <Header />
+      <main>
+        <MainContent />
+      </main>
+    </>
   )
 }
