@@ -8,6 +8,11 @@ export const Container = styled.section`
   justify-content: center;
   width: 100%;
   height: 100vh;
-  padding: 5rem;
   background-color: ${colors['primary-1']};
+  padding-top: 5.25rem;
+  transition: 0.3s all ease-out;
+
+  @media (max-width: 520px) {
+    padding-top: 4.5rem;
+  }
 `

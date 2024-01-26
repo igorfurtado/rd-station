@@ -30,10 +30,11 @@ export type TypographyBaseProps = {
   $lineheight?: string
   $size?: string
   color?: Color
-  align?: CSSProperties['textAlign']
-  mr?: CSSProperties['marginRight']
-  ml?: CSSProperties['marginLeft']
-  mt?: CSSProperties['marginTop']
-  mb?: CSSProperties['marginBottom']
-  opacity?: CSSProperties['opacity']
+  $align?: CSSProperties['textAlign']
+  $decoration?: CSSProperties['textDecoration']
+  $mr?: CSSProperties['marginRight']
+  $ml?: CSSProperties['marginLeft']
+  $mt?: CSSProperties['marginTop']
+  $mb?: CSSProperties['marginBottom']
+  $opacity?: CSSProperties['opacity']
 }
