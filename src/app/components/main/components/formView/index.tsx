@@ -2,6 +2,8 @@ import Image from 'next/image'
 
 import { useState } from 'react'
 
+import { motion } from 'framer-motion'
+
 import Button from '@/app/components/button'
 import Arrow from '@/app/components/icons/arrow'
 import Input from '@/app/components/input'
@@ -30,7 +32,24 @@ const FormView = ({ show, handleCurrentView }: FormViewProps) => {
   return (
     <Container>
       <div className='wrapper'>
-        <Description>
+        <Description
+          as={motion.div}
+          key='description'
+          initial={{
+            opacity: 1,
+            marginTop: show ? 0 : '-100px'
+          }}
+          animate={{
+            opacity: show ? 1 : 0,
+            marginTop: show ? 0 : '-100px',
+            transition: { duration: 0.35 }
+          }}
+          exit={{
+            opacity: 0,
+            marginTop: '-100px',
+            transition: { duration: 0.35 }
+          }}
+        >
           <Typography
             type='headingMd'
             role='h1'
