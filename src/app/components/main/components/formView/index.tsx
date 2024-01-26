@@ -80,10 +80,25 @@ const FormView = ({ show, handleCurrentView }: FormViewProps) => {
             width={471}
             height={347}
           />
-          <form
+          <motion.form
             onSubmit={event => {
               event.preventDefault()
               handleCurrentView('cardView')
+            }}
+            key='form'
+            initial={{
+              opacity: 1,
+              marginRight: show ? 0 : '-500px'
+            }}
+            animate={{
+              opacity: show ? 1 : 0,
+              marginRight: show ? 0 : '-500px',
+              transition: { duration: 0.35 }
+            }}
+            exit={{
+              opacity: 0,
+              marginRight: '-500px',
+              transition: { duration: 0.35 }
             }}
           >
             <Input
@@ -149,7 +164,7 @@ const FormView = ({ show, handleCurrentView }: FormViewProps) => {
             </AdditionalInformation>
 
             <Button title='Gerar cartão grátis' iconAfter={Arrow} />
-          </form>
+          </motion.form>
         </Content>
       </div>
     </Container>
