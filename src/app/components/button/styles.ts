@@ -1,11 +1,23 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { colors, fonts } from '@/app/styles/references'
 
-export const Container = styled.div`
+export const Container = styled.div<{
+  disabled?: boolean
+}>`
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  transition: 0.3s all ease-out;
+
+  ${({ disabled }) =>
+    !disabled &&
+    css`
+      &:hover {
+        transform: scale(1.02);
+      }
+    `}
 `
 
 export const StyledButton = styled.button`
@@ -26,9 +38,21 @@ export const StyledButton = styled.button`
   line-height: 150%;
   letter-spacing: 0.02rem;
   text-transform: uppercase;
+  white-space: nowrap;
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      cursor: unset;
+      background-color: #e1e4e8;
+      border: 1px solid #e1e4e8;
+      color: #97a1ac;
+    `}
 `
 
-export const Border = styled.div`
+export const Border = styled.div<{
+  disabled?: boolean
+}>`
   position: relative;
   display: flex;
   align-items: center;
@@ -37,6 +61,7 @@ export const Border = styled.div`
   height: 4px;
   background-color: transparent;
   z-index: 5;
+  cursor: ${({ disabled }) => (disabled ? 'unset' : 'pointer')};
 
   div {
     z-index: 10;
@@ -47,7 +72,8 @@ export const Border = styled.div`
       top: 0;
       width: 50%;
       height: 100%;
-      background-color: ${colors.dark};
+      background-color: ${({ disabled }) =>
+        disabled ? '#97A1AC' : colors.dark};
     }
 
     &:before {

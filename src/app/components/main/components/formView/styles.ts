@@ -36,6 +36,7 @@ export const Content = styled.div`
   form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 100%;
     height: 100%;
     gap: 1.5rem;
