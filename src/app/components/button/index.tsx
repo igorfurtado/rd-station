@@ -1,4 +1,4 @@
-import { ElementType } from 'react'
+import { ButtonHTMLAttributes, ElementType } from 'react'
 
 import { Border, Container, StyledButton } from './styles'
 
@@ -7,7 +7,7 @@ type ButtonProps = {
   disabled?: boolean
   iconBefore?: ElementType | null
   iconAfter?: ElementType | null
-}
+} & ButtonHTMLAttributes<HTMLButtonElement>
 
 const Button = ({
   title,

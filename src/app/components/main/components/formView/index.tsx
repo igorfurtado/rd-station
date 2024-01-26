@@ -8,6 +8,7 @@ import Input from '@/app/components/input'
 import Typography from '@/app/components/typography'
 import { phoneMask } from '@/app/utils/phone-mask'
 
+import { SelectedView } from '../..'
 import image from '../../../../../../public/img.svg'
 import {
   AdditionalInformation,
@@ -18,7 +19,7 @@ import {
 
 type FormViewProps = {
   show: boolean
-  handleCurrentView: () => void
+  handleCurrentView: (view: SelectedView) => void
 }
 
 const FormView = ({ show, handleCurrentView }: FormViewProps) => {
@@ -30,7 +31,13 @@ const FormView = ({ show, handleCurrentView }: FormViewProps) => {
     <Container>
       <div className='wrapper'>
         <Description>
-          <Typography type='headingMd' role='h1' color='light' $weight='700' $family='Red_Hat_Display'>
+          <Typography
+            type='headingMd'
+            role='h1'
+            color='light'
+            $weight='700'
+            $family='Red_Hat_Display'
+          >
             Gerador de Cartão de Visita
           </Typography>
           <Typography
@@ -54,7 +61,12 @@ const FormView = ({ show, handleCurrentView }: FormViewProps) => {
             width={471}
             height={347}
           />
-          <form>
+          <form
+            onSubmit={event => {
+              event.preventDefault()
+              handleCurrentView('cardView')
+            }}
+          >
             <Input
               label='Nome'
               placeholder='Seu Nome'

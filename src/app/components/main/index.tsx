@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
 import Footer from '../footer'
 import Header from '../header'
@@ -10,12 +10,16 @@ export type SelectedView = 'formView' | 'cardView'
 const MainContent = () => {
   const [currentView, setCurrentView] = useState<SelectedView>('formView')
 
+  const handleCurrentView = useCallback((view: SelectedView) => {
+    setCurrentView(view)
+  }, [])
+
   return (
     <Container>
       <Header />
       <FormView
         show={currentView === 'formView'}
-        handleCurrentView={() => setCurrentView('cardView')}
+        handleCurrentView={handleCurrentView}
       />
       <Footer />
     </Container>
