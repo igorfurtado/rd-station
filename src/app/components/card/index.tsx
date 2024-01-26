@@ -11,9 +11,10 @@ import { Container, Content } from './styles'
 
 type CardProps = {
   show: boolean
+  onClick: () => void
 }
 
-const Card = ({ show }: CardProps) => {
+const Card = ({ show, onClick }: CardProps) => {
   return (
     <AnimatePresence>
       {!show && (
@@ -27,15 +28,15 @@ const Card = ({ show }: CardProps) => {
           animate={{
             opacity: 1,
             x: 0,
-            transition: { duration: 2, delay: 0.2 }
+            transition: { duration: 1.8, delay: 0.2 }
           }}
           exit={{
             opacity: 0,
             x: '1000px',
-            transition: { duration: 2, ease: [0.4, 0.0, 0.2, 1.0] }
+            transition: { duration: 1.8, ease: [0.4, 0.0, 0.2, 1.0] }
           }}
         >
-          <button>
+          <button onClick={onClick}>
             <ReturnArrow />
             <Typography type='bodyLg' color='light' $ml='8px'>
               Gerar outro cartão

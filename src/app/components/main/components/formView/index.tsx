@@ -175,7 +175,10 @@ const FormView = ({ show, handleCurrentView }: FormViewProps) => {
                   <Button title='Gerar cartão grátis' iconAfter={Arrow} />
                 </motion.form>
               ) : (
-                <Card show={show} />
+                <Card
+                  show={show}
+                  onClick={() => handleCurrentView('formView')}
+                />
               )}
             </AnimatePresence>
           </TransitionBox>

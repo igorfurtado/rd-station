@@ -150,4 +150,8 @@ export const TransitionBox = styled.div`
   max-height: 21.875rem;
   overflow: hidden;
   gap: 1.5rem;
+
+  @media (max-width: 1100px) {
+    max-height: 35rem;
+  }
 `
