@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import { useState } from 'react'
 
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 
 import Button from '@/app/components/button'
 import Arrow from '@/app/components/icons/arrow'
@@ -80,91 +80,97 @@ const FormView = ({ show, handleCurrentView }: FormViewProps) => {
             width={471}
             height={347}
           />
-          <motion.form
-            onSubmit={event => {
-              event.preventDefault()
-              handleCurrentView('cardView')
-            }}
-            key='form'
-            initial={{
-              opacity: 1,
-              marginRight: show ? 0 : '-500px'
-            }}
-            animate={{
-              opacity: show ? 1 : 0,
-              marginRight: show ? 0 : '-500px',
-              transition: { duration: 0.35 }
-            }}
-            exit={{
-              opacity: 0,
-              marginRight: '-500px',
-              transition: { duration: 0.35 }
-            }}
-          >
-            <Input
-              label='Nome'
-              placeholder='Seu Nome'
-              required
-              value={name}
-              onChange={event => setName(event.target.value)}
-            />
-            <div className='row'>
-              <Input
-                label='Telefone'
-                placeholder='(00) 00000-0000'
-                required
-                value={phone}
-                onChange={event => setPhone(phoneMask(event.target.value))}
-                type='tel'
-                maxLength={15}
-              />
-
-              <Input
-                label='E-mail'
-                placeholder='nome@email.com'
-                required
-                value={email}
-                onChange={event => setEmail(event.target.value)}
-                type='email'
-              />
-            </div>
-
-            <AdditionalInformation>
-              <div>
-                <Typography
-                  type='subtitleXs'
-                  color='light'
-                  $size='12px'
-                  $lineheight='150%'
-                >
-                  • Ao preencher o formulário, concordo * em receber
-                  comunicações de acordo com meus interesses.
-                </Typography>
-                <br />
-                <Typography
-                  type='subtitleXs'
-                  color='light'
-                  $size='12px'
-                  $lineheight='150%'
-                >
-                  • Ao informar meus dados, eu concordo com a{' '}
-                  <span className='underline'>Política de privacidade.</span>
-                </Typography>
-              </div>
-
-              <Typography
-                type='subtitleXs'
-                color='light'
-                $size='12px'
-                $lineheight='150%'
+          <AnimatePresence>
+            {show && (
+              <motion.form
+                onSubmit={event => {
+                  event.preventDefault()
+                  handleCurrentView('cardView')
+                }}
+                key='form'
+                initial={{
+                  opacity: 1,
+                  marginRight: 0
+                }}
+                animate={{
+                  opacity: 1,
+                  marginRight: 0,
+                  transition: { duration: 0.35 }
+                }}
+                exit={{
+                  opacity: 0,
+                  marginRight: '-500px',
+                  transition: { duration: 0.35 }
+                }}
               >
-                * Você pode alterar suas permissões de comunicação a qualquer
-                tempo.
-              </Typography>
-            </AdditionalInformation>
+                <Input
+                  label='Nome'
+                  placeholder='Seu Nome'
+                  required
+                  value={name}
+                  onChange={event => setName(event.target.value)}
+                />
+                <div className='row'>
+                  <Input
+                    label='Telefone'
+                    placeholder='(00) 00000-0000'
+                    required
+                    value={phone}
+                    onChange={event => setPhone(phoneMask(event.target.value))}
+                    type='tel'
+                    maxLength={15}
+                  />
 
-            <Button title='Gerar cartão grátis' iconAfter={Arrow} />
-          </motion.form>
+                  <Input
+                    label='E-mail'
+                    placeholder='nome@email.com'
+                    required
+                    value={email}
+                    onChange={event => setEmail(event.target.value)}
+                    type='email'
+                  />
+                </div>
+
+                <AdditionalInformation>
+                  <div>
+                    <Typography
+                      type='subtitleXs'
+                      color='light'
+                      $size='12px'
+                      $lineheight='150%'
+                    >
+                      • Ao preencher o formulário, concordo * em receber
+                      comunicações de acordo com meus interesses.
+                    </Typography>
+                    <br />
+                    <Typography
+                      type='subtitleXs'
+                      color='light'
+                      $size='12px'
+                      $lineheight='150%'
+                    >
+                      • Ao informar meus dados, eu concordo com a{' '}
+                      <span className='underline'>
+                        Política de privacidade.
+                      </span>
+                    </Typography>
+                  </div>
+
+                  <Typography
+                    type='subtitleXs'
+                    color='light'
+                    $size='12px'
+                    $lineheight='150%'
+                  >
+                    * Você pode alterar suas permissões de comunicação a
+                    qualquer tempo.
+                  </Typography>
+                </AdditionalInformation>
+
+                <Button title='Gerar cartão grátis' iconAfter={Arrow} />
+              </motion.form>
+            )}
+          </AnimatePresence>
         </Content>
       </div>
     </Container>
