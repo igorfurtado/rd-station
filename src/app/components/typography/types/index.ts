@@ -32,6 +32,7 @@ export type TypographyBaseProps = {
   color?: Color
   $align?: CSSProperties['textAlign']
   $decoration?: CSSProperties['textDecoration']
+  $transform?: CSSProperties['textTransform']
   $mr?: CSSProperties['marginRight']
   $ml?: CSSProperties['marginLeft']
   $mt?: CSSProperties['marginTop']
