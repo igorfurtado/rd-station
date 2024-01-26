@@ -1,9 +1,10 @@
-import { Darker_Grotesque, Nunito_Sans } from 'next/font/google'
+import { Darker_Grotesque, Nunito_Sans, Red_Hat_Display } from 'next/font/google'
 
 import { DefaultFonts, FontStyle } from '../components/typography/types'
 
 const nunito = Nunito_Sans({ subsets: ['latin'] })
 const grotesque = Darker_Grotesque({ subsets: ['latin'] })
+const redHat = Red_Hat_Display({ subsets: ['latin'] })
 
 export const colors = {
   primary: '#4839A3',
@@ -22,7 +23,8 @@ export const colors = {
 export const fonts = {
   family: {
     Nunito_Sans: `${nunito.style.fontFamily}, sans-serif`,
-    Darker_Grotesque: `${grotesque.style.fontFamily}, sans-serif`
+    Darker_Grotesque: `${grotesque.style.fontFamily}, sans-serif`,
+    Red_Hat_Display: `${redHat.style.fontFamily}, sans-serif`
   }
 }
 

@@ -28,91 +28,99 @@ const FormView = ({ show, handleCurrentView }: FormViewProps) => {
 
   return (
     <Container>
-      <Description>
-        <Typography type='headingMd' role='h1' color='light' $weight='700'>
-          Gerador de Cartão de Visita
-        </Typography>
-        <Typography type='subtitleXs' role='p' color='light' $align='center'>
-          Crie grátis seu cartão de visita em passos rápidos! Você o insere no{' '}
-          <br />
-          Instagram e demais canais digitais.
-        </Typography>
-      </Description>
+      <div className='wrapper'>
+        <Description>
+          <Typography type='headingMd' role='h1' color='light' $weight='700' $family='Red_Hat_Display'>
+            Gerador de Cartão de Visita
+          </Typography>
+          <Typography
+            type='subtitleXs'
+            role='p'
+            color='light'
+            $align='center'
+            $size='20px'
+          >
+            Crie grátis seu cartão de visita em passos rápidos! Você o insere no{' '}
+            <br />
+            Instagram e demais canais digitais.
+          </Typography>
+        </Description>
 
-      <Content>
-        <Image
-          priority
-          src={image}
-          alt='Landing Page Image'
-          width={471}
-          height={347}
-        />
-        <form>
-          <Input
-            label='Nome'
-            placeholder='Seu Nome'
-            required
-            value={name}
-            onChange={event => setName(event.target.value)}
+        <Content>
+          <Image
+            priority
+            src={image}
+            alt='Landing Page Image'
+            width={471}
+            height={347}
           />
-          <div className='row'>
+          <form>
             <Input
-              label='Telefone'
-              placeholder='(00) 00000-0000'
+              label='Nome'
+              placeholder='Seu Nome'
               required
-              value={phone}
-              onChange={event => setPhone(phoneMask(event.target.value))}
-              type='tel'
-              maxLength={15}
+              value={name}
+              onChange={event => setName(event.target.value)}
             />
+            <div className='row'>
+              <Input
+                label='Telefone'
+                placeholder='(00) 00000-0000'
+                required
+                value={phone}
+                onChange={event => setPhone(phoneMask(event.target.value))}
+                type='tel'
+                maxLength={15}
+              />
 
-            <Input
-              label='E-mail'
-              placeholder='nome@email.com'
-              required
-              value={email}
-              onChange={event => setEmail(event.target.value)}
-              type='email'
-            />
-          </div>
-
-          <AdditionalInformation>
-            <div>
-              <Typography
-                type='subtitleXs'
-                color='light'
-                $size='12px'
-                $lineheight='150%'
-              >
-                • Ao preencher o formulário, concordo * em receber comunicações
-                de acordo com meus interesses.
-              </Typography>
-              <br />
-              <Typography
-                type='subtitleXs'
-                color='light'
-                $size='12px'
-                $lineheight='150%'
-              >
-                • Ao informar meus dados, eu concordo com a{' '}
-                <span className='underline'>Política de privacidade.</span>
-              </Typography>
+              <Input
+                label='E-mail'
+                placeholder='nome@email.com'
+                required
+                value={email}
+                onChange={event => setEmail(event.target.value)}
+                type='email'
+              />
             </div>
 
-            <Typography
-              type='subtitleXs'
-              color='light'
-              $size='12px'
-              $lineheight='150%'
-            >
-              * Você pode alterar suas permissões de comunicação a qualquer
-              tempo.
-            </Typography>
-          </AdditionalInformation>
+            <AdditionalInformation>
+              <div>
+                <Typography
+                  type='subtitleXs'
+                  color='light'
+                  $size='12px'
+                  $lineheight='150%'
+                >
+                  • Ao preencher o formulário, concordo * em receber
+                  comunicações de acordo com meus interesses.
+                </Typography>
+                <br />
+                <Typography
+                  type='subtitleXs'
+                  color='light'
+                  $size='12px'
+                  $lineheight='150%'
+                >
+                  • Ao informar meus dados, eu concordo com a{' '}
+                  <span className='underline'>Política de privacidade.</span>
+                </Typography>
+              </div>
 
-          <Button title='Gerar cartão grátis' iconAfter={Arrow} />
-        </form>
-      </Content>
+              <Typography
+                type='subtitleXs'
+                color='light'
+                $size='12px'
+                $lineheight='150%'
+              >
+                * Você pode alterar suas permissões de comunicação a qualquer
+                tempo.
+              </Typography>
+            </AdditionalInformation>
+
+            <Button title='Gerar cartão grátis' iconAfter={Arrow} />
+          </form>
+        </Content>
+      </div>
     </Container>
   )
 }

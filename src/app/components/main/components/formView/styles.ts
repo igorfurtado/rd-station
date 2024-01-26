@@ -13,6 +13,14 @@ export const Container = styled.section`
   background-color: ${colors['primary-1']};
   gap: 2.75rem;
 
+  div {
+    &.wrapper {
+      gap: 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
   @media (max-width: 480px) {
     padding: 3.375rem 1.5rem;
   }
@@ -24,6 +32,30 @@ export const Description = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1rem;
+
+  h1 {
+    @media (max-width: 700px) {
+      font-size: 1.8rem;
+    }
+
+    @media (max-width: 580px) {
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 370px) {
+      font-size: 1.25rem;
+    }
+  }
+
+  p {
+    @media (max-width: 700px) {
+      font-size: 1rem;
+    }
+
+    @media (max-width: 370px) {
+      font-size: 0.875rem;
+    }
+  }
 `
 
 export const Content = styled.div`
