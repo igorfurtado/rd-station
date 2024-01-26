@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { colors } from '@/app/styles/references'
 
 export const Container = styled.header`
-  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;

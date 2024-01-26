@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import Footer from '../footer'
+import Header from '../header'
 import FormView from './components/formView'
 import { Container } from './styles'
 
@@ -10,15 +12,12 @@ const MainContent = () => {
 
   return (
     <Container>
+      <Header />
       <FormView
         show={currentView === 'formView'}
         handleCurrentView={() => setCurrentView('cardView')}
       />
-
-      {/* <CardView
-        show={currentView === 'cardView'}
-        handleCurrentView={() => setCurrentView('formView')}
-      /> */}
+      <Footer />
     </Container>
   )
 }

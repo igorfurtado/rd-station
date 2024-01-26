@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 
 import Button from '@/app/components/button'
+import Arrow from '@/app/components/icons/arrow'
 import Input from '@/app/components/input'
 import Typography from '@/app/components/typography'
 import { phoneMask } from '@/app/utils/phone-mask'
@@ -109,7 +110,7 @@ const FormView = ({ show, handleCurrentView }: FormViewProps) => {
             </Typography>
           </AdditionalInformation>
 
-          <Button title='Gerar cartão grátis' />
+          <Button title='Gerar cartão grátis' iconAfter={Arrow} />
         </form>
       </Content>
     </Container>
