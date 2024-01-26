@@ -17,4 +17,5 @@ export const BaseText = styled.span<TypographyBaseProps>`
   margin-bottom: ${({ $mb }) => $mb || 0};
   margin-left: ${({ $ml }) => $ml || 0};
   opacity: ${({ $opacity }) => $opacity || 1};
+  text-decoration: ${({ $decoration }) => $decoration || 'initial'};
 `
