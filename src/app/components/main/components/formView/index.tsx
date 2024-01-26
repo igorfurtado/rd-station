@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 import Button from '@/app/components/button'
+import Card from '@/app/components/card'
 import Arrow from '@/app/components/icons/arrow'
 import Input from '@/app/components/input'
 import Typography from '@/app/components/typography'
@@ -16,7 +17,8 @@ import {
   AdditionalInformation,
   Container,
   Content,
-  Description
+  Description,
+  TransitionBox
 } from './styles'
 
 type FormViewProps = {
@@ -80,97 +82,194 @@ const FormView = ({ show, handleCurrentView }: FormViewProps) => {
             width={471}
             height={347}
           />
-          <AnimatePresence>
-            {show && (
-              <motion.form
-                onSubmit={event => {
-                  event.preventDefault()
-                  handleCurrentView('cardView')
-                }}
-                key='form'
-                initial={{
-                  opacity: 1,
-                  marginRight: 0
-                }}
-                animate={{
-                  opacity: 1,
-                  marginRight: 0,
-                  transition: { duration: 0.35 }
-                }}
-                exit={{
-                  opacity: 0,
-                  marginRight: '-500px',
-                  transition: { duration: 0.35 }
-                }}
-              >
-                <Input
-                  label='Nome'
-                  placeholder='Seu Nome'
-                  required
-                  value={name}
-                  onChange={event => setName(event.target.value)}
-                />
-                <div className='row'>
+          <TransitionBox>
+            <AnimatePresence>
+              {show ? (
+                <motion.form
+                  onSubmit={event => {
+                    event.preventDefault()
+                    handleCurrentView('cardView')
+                  }}
+                  key='form'
+                  initial={{
+                    opacity: 1,
+                    x: 0
+                  }}
+                  animate={{
+                    opacity: 1,
+                    x: 0,
+                    transition: { duration: 0.7, delay: 1 }
+                  }}
+                  exit={{
+                    opacity: 0,
+                    x: '1000px',
+                    transition: { duration: 0.7, ease: [0.4, 0.0, 0.2, 1.0] }
+                  }}
+                >
                   <Input
-                    label='Telefone'
-                    placeholder='(00) 00000-0000'
+                    label='Nome'
+                    placeholder='Seu Nome'
                     required
-                    value={phone}
-                    onChange={event => setPhone(phoneMask(event.target.value))}
-                    type='tel'
-                    maxLength={15}
+                    value={name}
+                    onChange={event => setName(event.target.value)}
                   />
+                  <div className='row'>
+                    <Input
+                      label='Telefone'
+                      placeholder='(00) 00000-0000'
+                      required
+                      value={phone}
+                      onChange={event =>
+                        setPhone(phoneMask(event.target.value))
+                      }
+                      type='tel'
+                      maxLength={15}
+                    />
 
-                  <Input
-                    label='E-mail'
-                    placeholder='nome@email.com'
-                    required
-                    value={email}
-                    onChange={event => setEmail(event.target.value)}
-                    type='email'
-                  />
-                </div>
-
-                <AdditionalInformation>
-                  <div>
-                    <Typography
-                      type='subtitleXs'
-                      color='light'
-                      $size='12px'
-                      $lineheight='150%'
-                    >
-                      • Ao preencher o formulário, concordo * em receber
-                      comunicações de acordo com meus interesses.
-                    </Typography>
-                    <br />
-                    <Typography
-                      type='subtitleXs'
-                      color='light'
-                      $size='12px'
-                      $lineheight='150%'
-                    >
-                      • Ao informar meus dados, eu concordo com a{' '}
-                      <span className='underline'>
-                        Política de privacidade.
-                      </span>
-                    </Typography>
+                    <Input
+                      label='E-mail'
+                      placeholder='nome@email.com'
+                      required
+                      value={email}
+                      onChange={event => setEmail(event.target.value)}
+                      type='email'
+                    />
                   </div>
 
-                  <Typography
-                    type='subtitleXs'
-                    color='light'
-                    $size='12px'
-                    $lineheight='150%'
-                  >
-                    * Você pode alterar suas permissões de comunicação a
-                    qualquer tempo.
-                  </Typography>
-                </AdditionalInformation>
+                  <AdditionalInformation>
+                    <div>
+                      <Typography
+                        type='subtitleXs'
+                        color='light'
+                        $size='12px'
+                        $lineheight='150%'
+                      >
+                        • Ao preencher o formulário, concordo * em receber
+                        comunicações de acordo com meus interesses.
+                      </Typography>
+                      <br />
+                      <Typography
+                        type='subtitleXs'
+                        color='light'
+                        $size='12px'
+                        $lineheight='150%'
+                      >
+                        • Ao informar meus dados, eu concordo com a{' '}
+                        <span className='underline'>
+                          Política de privacidade.
+                        </span>
+                      </Typography>
+                    </div>
 
-                <Button title='Gerar cartão grátis' iconAfter={Arrow} />
-              </motion.form>
-            )}
-          </AnimatePresence>
+                    <Typography
+                      type='subtitleXs'
+                      color='light'
+                      $size='12px'
+                      $lineheight='150%'
+                    >
+                      * Você pode alterar suas permissões de comunicação a
+                      qualquer tempo.
+                    </Typography>
+                  </AdditionalInformation>
+
+                  <Button title='Gerar cartão grátis' iconAfter={Arrow} />
+                </motion.form>
+              ) : (
+                <Card show={show} />
+              )}
+            </AnimatePresence>
+          </TransitionBox>
+          {/* <AnimatePresence> */}
+          {/* {show && ( */}
+          {/* <motion.form
+            onSubmit={event => {
+              event.preventDefault()
+              handleCurrentView('cardView')
+            }}
+            key='form'
+            initial={{
+              opacity: 1,
+              marginRight: show ? 0 : '-1000px'
+            }}
+            animate={{
+              opacity: 1,
+              marginRight: show ? 0 : '-1000px',
+              transition: { duration: 3, delay: 2 }
+            }}
+            exit={{
+              opacity: 0,
+              marginRight: '-1000px',
+              transition: { duration: 3, ease: [0.4, 0.0, 0.2, 1.0] }
+            }}
+          >
+            <Input
+              label='Nome'
+              placeholder='Seu Nome'
+              required
+              value={name}
+              onChange={event => setName(event.target.value)}
+            />
+            <div className='row'>
+              <Input
+                label='Telefone'
+                placeholder='(00) 00000-0000'
+                required
+                value={phone}
+                onChange={event => setPhone(phoneMask(event.target.value))}
+                type='tel'
+                maxLength={15}
+              />
+
+              <Input
+                label='E-mail'
+                placeholder='nome@email.com'
+                required
+                value={email}
+                onChange={event => setEmail(event.target.value)}
+                type='email'
+              />
+            </div>
+
+            <AdditionalInformation>
+              <div>
+                <Typography
+                  type='subtitleXs'
+                  color='light'
+                  $size='12px'
+                  $lineheight='150%'
+                >
+                  • Ao preencher o formulário, concordo * em receber
+                  comunicações de acordo com meus interesses.
+                </Typography>
+                <br />
+                <Typography
+                  type='subtitleXs'
+                  color='light'
+                  $size='12px'
+                  $lineheight='150%'
+                >
+                  • Ao informar meus dados, eu concordo com a{' '}
+                  <span className='underline'>Política de privacidade.</span>
+                </Typography>
+              </div>
+
+              <Typography
+                type='subtitleXs'
+                color='light'
+                $size='12px'
+                $lineheight='150%'
+              >
+                * Você pode alterar suas permissões de comunicação a qualquer
+                tempo.
+              </Typography>
+            </AdditionalInformation>
+
+            <Button title='Gerar cartão grátis' iconAfter={Arrow} />
+          </motion.form> */}
+
+          {/* <Card show={show} /> */}
+          {/* )} */}
+          {/* </AnimatePresence> */}
         </Content>
       </div>
     </Container>

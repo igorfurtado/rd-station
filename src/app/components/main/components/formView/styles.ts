@@ -17,6 +17,8 @@ export const Container = styled.section`
     &.wrapper {
       gap: 2rem;
       display: flex;
+      height: 100%;
+      width: 100%;
       flex-direction: column;
     }
   }
@@ -136,4 +138,14 @@ export const AdditionalInformation = styled.div`
       text-decoration: underline;
     }
   }
+`
+
+export const TransitionBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 1.5rem;
+  background-color: red;
 `
