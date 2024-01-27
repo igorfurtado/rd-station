@@ -2,7 +2,9 @@ import styled from 'styled-components'
 
 import { colors } from '@/app/styles/references'
 
-export const Container = styled.section`
+export const Container = styled.section<{
+  show: boolean
+}>`
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -20,6 +22,10 @@ export const Container = styled.section`
       height: 100%;
       width: 100%;
       flex-direction: column;
+
+      @media (max-width: 1100px) {
+        gap: ${({ show }) => (show ? '2rem' : '0')};
+      }
     }
   }
 
@@ -28,7 +34,7 @@ export const Container = styled.section`
   }
 
   @media (max-width: 480px) {
-    padding: 3.375rem 1.5rem;
+    padding: ${({ show }) => (show ? '3.375rem 1.5rem' : '2.25rem 1.5rem')};
   }
 `
 
@@ -64,7 +70,9 @@ export const Description = styled.div`
   }
 `
 
-export const Content = styled.div`
+export const Content = styled.div<{
+  show: boolean
+}>`
   display: flex;
   width: 100%;
   height: 100%;
@@ -72,13 +80,17 @@ export const Content = styled.div`
   align-items: center;
   gap: 11.875rem;
 
-  img {
+  > img {
     max-width: 471px;
     max-height: 347px;
 
     @media (max-width: 1440px) {
       max-width: 400px;
       max-height: 232px;
+    }
+
+    @media (max-width: 1100px) {
+      display: ${({ show }) => (show ? 'flex' : 'none')};
     }
 
     @media (max-width: 580px) {
