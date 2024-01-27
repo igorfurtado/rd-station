@@ -32,7 +32,7 @@ const FormView = ({ show, handleCurrentView }: FormViewProps) => {
   const [email, setEmail] = useState<string>('')
 
   return (
-    <Container show={show}>
+    <Container $show={show}>
       <div className='wrapper'>
         <Description
           as={motion.div}
@@ -74,7 +74,7 @@ const FormView = ({ show, handleCurrentView }: FormViewProps) => {
           </Typography>
         </Description>
 
-        <Content show={show}>
+        <Content $show={show}>
           <Image
             priority
             src={image}

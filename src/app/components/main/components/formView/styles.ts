@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { colors } from '@/app/styles/references'
 
 export const Container = styled.section<{
-  show: boolean
+  $show: boolean
 }>`
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@ export const Container = styled.section<{
       flex-direction: column;
 
       @media (max-width: 1100px) {
-        gap: ${({ show }) => (show ? '2rem' : '0')};
+        gap: ${({ $show }) => ($show ? '2rem' : '0')};
       }
     }
   }
@@ -34,7 +34,7 @@ export const Container = styled.section<{
   }
 
   @media (max-width: 480px) {
-    padding: ${({ show }) => (show ? '3.375rem 1.5rem' : '2.25rem 1.5rem')};
+    padding: ${({ $show }) => ($show ? '3.375rem 1.5rem' : '2.25rem 1.5rem')};
   }
 `
 
@@ -71,7 +71,7 @@ export const Description = styled.div`
 `
 
 export const Content = styled.div<{
-  show: boolean
+  $show: boolean
 }>`
   display: flex;
   width: 100%;
@@ -90,7 +90,7 @@ export const Content = styled.div<{
     }
 
     @media (max-width: 1100px) {
-      display: ${({ show }) => (show ? 'flex' : 'none')};
+      display: ${({ $show }) => ($show ? 'flex' : 'none')};
     }
 
     @media (max-width: 580px) {
