@@ -6,15 +6,17 @@ import logo from '../../../../public/logo.svg'
 import Button from '../button'
 import DownLoad from '../icons/download'
 import ReturnArrow from '../icons/return-arrow'
+import { FormType } from '../main/components/formView/hooks/use-form-view'
 import Typography from '../typography'
 import { Container, Content } from './styles'
 
 type CardProps = {
+  formData: FormType
   show: boolean
   onClick: () => void
 }
 
-const Card = ({ show, onClick }: CardProps) => {
+const Card = ({ formData, show, onClick }: CardProps) => {
   return (
     <AnimatePresence>
       {!show && (
@@ -49,13 +51,13 @@ const Card = ({ show, onClick }: CardProps) => {
             <div className='divisor' />
             <div className='textWrapper'>
               <Typography type='bodySm' $size='20px'>
-                Nome e Sobrenome
+                {formData.name}
               </Typography>
               <Typography type='bodySm' $size='20px'>
-                (00) 00000-0000
+                {formData.phone}
               </Typography>
               <Typography type='bodySm' $size='20px'>
-                meuemail@email.com
+                {formData.email}
               </Typography>
             </div>
           </Content>

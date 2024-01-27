@@ -1,7 +1,5 @@
 import Image from 'next/image'
 
-import { useState } from 'react'
-
 import { AnimatePresence, motion } from 'framer-motion'
 
 import Button from '@/app/components/button'
@@ -9,10 +7,10 @@ import Card from '@/app/components/card'
 import Arrow from '@/app/components/icons/arrow'
 import Input from '@/app/components/input'
 import Typography from '@/app/components/typography'
-import { phoneMask } from '@/app/utils/phone-mask'
 
 import { SelectedView } from '../..'
 import image from '../../../../../../public/img.svg'
+import useFormView from './hooks/use-form-view'
 import {
   AdditionalInformation,
   Container,
@@ -27,9 +25,9 @@ type FormViewProps = {
 }
 
 const FormView = ({ show, handleCurrentView }: FormViewProps) => {
-  const [name, setName] = useState<string>('')
-  const [phone, setPhone] = useState<string>('')
-  const [email, setEmail] = useState<string>('')
+  const { formData, control, handleSubmit, clearForm, onSubmit } = useFormView({
+    handleCurrentView
+  })
 
   return (
     <Container $show={show}>
@@ -87,10 +85,7 @@ const FormView = ({ show, handleCurrentView }: FormViewProps) => {
             <AnimatePresence>
               {show ? (
                 <motion.form
-                  onSubmit={event => {
-                    event.preventDefault()
-                    handleCurrentView('cardView')
-                  }}
+                  onSubmit={handleSubmit(onSubmit)}
                   key='form'
                   initial={{
                     opacity: 1,
@@ -108,31 +103,37 @@ const FormView = ({ show, handleCurrentView }: FormViewProps) => {
                   }}
                 >
                   <Input
+                    name='name'
+                    $control={control}
                     label='Nome'
                     placeholder='Seu Nome'
                     required
-                    value={name}
-                    onChange={event => setName(event.target.value)}
+                    // value={name}
+                    // onChange={event => handleName(event.target.value)}
                   />
                   <div className='row'>
                     <Input
+                      name='phone'
+                      $control={control}
                       label='Telefone'
                       placeholder='(00) 00000-0000'
                       required
-                      value={phone}
-                      onChange={event =>
-                        setPhone(phoneMask(event.target.value))
-                      }
+                      // value={phone}
+                      // onChange={event =>
+                      //   handlePhone(phoneMask(event.target.value))
+                      // }
                       type='tel'
                       maxLength={15}
                     />
 
                     <Input
+                      name='email'
+                      $control={control}
                       label='E-mail'
                       placeholder='nome@email.com'
                       required
-                      value={email}
-                      onChange={event => setEmail(event.target.value)}
+                      // value={email}
+                      // onChange={event => handleEmail(event.target.value)}
                       type='email'
                     />
                   </div>
@@ -177,8 +178,12 @@ const FormView = ({ show, handleCurrentView }: FormViewProps) => {
                 </motion.form>
               ) : (
                 <Card
+                  formData={formData}
                   show={show}
-                  onClick={() => handleCurrentView('formView')}
+                  onClick={() => {
+                    clearForm()
+                    handleCurrentView('formView')
+                  }}
                 />
               )}
             </AnimatePresence>

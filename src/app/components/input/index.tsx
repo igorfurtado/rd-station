@@ -1,17 +1,39 @@
 import { InputHTMLAttributes } from 'react'
+import { Control, Controller } from 'react-hook-form'
 
+import { FormType } from '../main/components/formView/hooks/use-form-view'
+import Typography from '../typography'
 import { Container, Label, StyledInput } from './styles'
 
 type InputProps = {
+  name: 'name' | 'email' | 'phone'
+  $control: Control<FormType, any>
   label: string
   required?: boolean
 } & InputHTMLAttributes<HTMLInputElement>
 
-const Input = ({ label, required, ...props }: InputProps) => {
+const Input = ({ name, label, $control, required, ...props }: InputProps) => {
   return (
     <Container>
       <Label htmlFor={label}>{`${label} ${required ? '*' : ''}`}</Label>
-      <StyledInput id={label} required={required} {...props} />
+      <Controller
+        name={name}
+        control={$control}
+        render={({ field: { onChange, value }, fieldState: { error } }) => (
+          <>
+            <StyledInput
+              id={label}
+              value={value}
+              required={required}
+              {...props}
+              onChange={onChange}
+            />
+            <Typography type='subtitleXs' color='secondary' $size='12px'>
+              {error?.message}
+            </Typography>
+          </>
+        )}
+      ></Controller>
     </Container>
   )
 }
