@@ -62,7 +62,11 @@ const Card = ({ formData, show, onClick }: CardProps) => {
             </div>
           </Content>
           <Button title='Baixar Cartão' iconBefore={DownLoad} disabled />
-          <div className='centerText'>
+          <a
+            className='centerText'
+            target='blank'
+            href='https://app.rdstation.com.br/signup'
+          >
             <Typography
               type='bodyLg'
               $align='center'
@@ -73,7 +77,7 @@ const Card = ({ formData, show, onClick }: CardProps) => {
             >
               Fazer um teste grátis do RD Station Marketing
             </Typography>
-          </div>
+          </a>
         </Container>
       )}
     </AnimatePresence>

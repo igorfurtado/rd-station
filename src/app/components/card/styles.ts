@@ -41,18 +41,6 @@ export const Container = styled.div`
       }
     }
 
-    &.centerText {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      span {
-        @media (max-width: 580px) {
-          font-size: 14px;
-        }
-      }
-    }
-
     &.imageWrapper {
       display: flex;
       justify-content: center;
@@ -65,6 +53,22 @@ export const Container = styled.div`
       width: 0.1875rem;
       height: 100%;
       display: flex;
+    }
+  }
+
+  a {
+    &.centerText {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      cursor: pointer;
+
+      span {
+        @media (max-width: 580px) {
+          font-size: 14px;
+        }
+      }
     }
   }
 `
