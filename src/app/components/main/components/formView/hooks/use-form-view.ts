@@ -47,7 +47,7 @@ const useFormView = ({ handleCurrentView }: FormHook) => {
         phone => {
           if (!phone) return true
           const phoneRegex =
-            /^(?:(?:\+?55\s?)?(?:\(?\d{2}\)?\s?)?)?(?:9\d{4}|\d{4})[-\s]?\d{4}$/
+          /^(?:(?:\+|00)?(55)\s?)?(?:(?:\(?[1-9][0-9]\)?)?\s?)?(?:((?:9\d|[2-9])\d{3})-?(\d{4}))$/
           return phoneRegex.test(phone)
         },
         { message: 'Insira um telefone válido' }
