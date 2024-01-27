@@ -28,8 +28,8 @@ export const Container = styled.section<{
     }
   }
 
-  @media (max-width: 1280px) {
-    padding: 4rem;
+  @media (max-width: 1440px) {
+    padding: 3rem 5rem;
   }
 
   @media (max-width: 1100px) {
@@ -162,7 +162,7 @@ export const TransitionBox = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  max-height: 23rem;
+  max-height: 24.8rem;
   overflow: hidden;
   gap: 1.5rem;
 

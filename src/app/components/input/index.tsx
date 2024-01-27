@@ -1,6 +1,8 @@
 import { InputHTMLAttributes } from 'react'
 import { Control, Controller } from 'react-hook-form'
 
+import { phoneMask } from '@/app/utils/phone-mask'
+
 import { FormType } from '../main/components/formView/hooks/use-form-view'
 import Typography from '../typography'
 import { Container, Label, StyledInput } from './styles'
@@ -26,7 +28,9 @@ const Input = ({ name, label, $control, required, ...props }: InputProps) => {
               value={value}
               required={required}
               {...props}
-              onChange={onChange}
+              onChange={e => {
+                name === 'phone' ? onChange(phoneMask(e.target.value)) : onChange(e.target.value)
+              }}
             />
             <Typography type='subtitleXs' color='secondary' $size='12px'>
               {error?.message}
