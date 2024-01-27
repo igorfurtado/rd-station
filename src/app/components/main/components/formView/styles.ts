@@ -19,7 +19,6 @@ export const Container = styled.section<{
     &.wrapper {
       gap: 2rem;
       display: flex;
-      height: 100%;
       width: 100%;
       flex-direction: column;
 
@@ -31,6 +30,10 @@ export const Container = styled.section<{
 
   @media (max-width: 1280px) {
     padding: 4rem;
+  }
+
+  @media (max-width: 1100px) {
+    justify-content: ${({ $show }) => ($show ? 'center' : 'flex-start')};
   }
 
   @media (max-width: 480px) {
@@ -159,7 +162,7 @@ export const TransitionBox = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  max-height: 21.875rem;
+  max-height: 23rem;
   overflow: hidden;
   gap: 1.5rem;
 
