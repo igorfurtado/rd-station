@@ -108,8 +108,6 @@ const FormView = ({ show, handleCurrentView }: FormViewProps) => {
                     label='Nome'
                     placeholder='Seu Nome'
                     required
-                    // value={name}
-                    // onChange={event => handleName(event.target.value)}
                   />
                   <div className='row'>
                     <Input
@@ -118,10 +116,6 @@ const FormView = ({ show, handleCurrentView }: FormViewProps) => {
                       label='Telefone'
                       placeholder='(00) 00000-0000'
                       required
-                      // value={phone}
-                      // onChange={event =>
-                      //   handlePhone(phoneMask(event.target.value))
-                      // }
                       type='tel'
                       maxLength={15}
                     />
@@ -132,8 +126,6 @@ const FormView = ({ show, handleCurrentView }: FormViewProps) => {
                       label='E-mail'
                       placeholder='nome@email.com'
                       required
-                      // value={email}
-                      // onChange={event => handleEmail(event.target.value)}
                       type='email'
                     />
                   </div>
